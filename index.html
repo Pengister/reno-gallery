@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gallery | Reno Restorations</title>
+
+<style>
+
+/* GLOBAL */
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family: "Inter", sans-serif;
+background:#f7f5f2;
+color:#2b2b2b;
+line-height:1.6;
+}
+
+/* CONTAINER */
+
+.container{
+max-width:1300px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* FILTER BUTTONS */
+
+.gallery-filter{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:12px;
+margin-bottom:60px;
+}
+
+.filter-btn{
+padding:12px 22px;
+border:1px solid #d7d2ca;
+background:#fff;
+font-size:13px;
+letter-spacing:1px;
+text-transform:uppercase;
+cursor:pointer;
+transition:all .3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+background:#1f1f1f;
+color:#fff;
+border-color:#1f1f1f;
+}
+
+/* SECTION TITLE */
+
+.gallery-heading{
+text-align:center;
+margin-bottom:50px;
+}
+
+.gallery-heading h2{
+font-size:42px;
+font-family:Georgia,serif;
+font-weight:400;
+}
+
+.gallery-heading span{
+color:#7b8b7a;
+font-style:italic;
+}
+
+.gallery-heading p{
+margin-top:12px;
+max-width:600px;
+margin-left:auto;
+margin-right:auto;
+font-size:15px;
+color:#777;
+}
+
+/* GRID */
+
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+}
+
+/* CARD */
+
+.gallery-card{
+background:#fff;
+border-radius:6px;
+overflow:hidden;
+box-shadow:0 6px 25px rgba(0,0,0,0.06);
+transition:transform .3s ease;
+}
+
+.gallery-card:hover{
+transform:translateY(-5px);
+}
+
+/* BEFORE AFTER */
+
+.ba-wrap{
+display:grid;
+grid-template-columns:1fr 1fr;
+}
+
+.ba-img{
+position:relative;
+height:240px;
+overflow:hidden;
+}
+
+.ba-img img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:transform .4s ease;
+}
+
+.gallery-card:hover img{
+transform:scale(1.05);
+}
+
+/* LABEL */
+
+.ba-label{
+position:absolute;
+top:12px;
+left:12px;
+font-size:11px;
+letter-spacing:1px;
+padding:4px 10px;
+color:#fff;
+background:#1f1f1f;
+}
+
+.after .ba-label{
+background:#c7a76b;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.gallery-grid{
+grid-template-columns:1fr;
+}
+
+.ba-img{
+height:200px;
+}
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+<!-- FILTER -->
+
+<div class="gallery-filter">
+
+<button class="filter-btn active" data-filter="all">All Projects</button>
+<button class="filter-btn" data-filter="residential">Residential</button>
+<button class="filter-btn" data-filter="commercial">Commercial</button>
+<button class="filter-btn" data-filter="construction">Post-Construction</button>
+<button class="filter-btn" data-filter="carpet">Carpet & Upholstery</button>
+<button class="filter-btn" data-filter="exterior">Exterior</button>
+
+</div>
+
+
+<!-- HEADING -->
+
+<div class="gallery-heading">
+
+<h2>Real <span>Results</span></h2>
+
+<p>
+Every project below is a real job completed by our team.  
+Browse the transformations and see the difference professional cleaning makes.
+</p>
+
+</div>
+
+
+<!-- GRID -->
+
+<div class="gallery-grid" id="galleryGrid">
+
+
+<!-- ITEM -->
+
+<div class="gallery-card" data-category="residential">
+
+<div class="ba-wrap">
+
+<div class="ba-img before">
+<div class="ba-label">Before</div>
+<img src="images/0AF99E4C-82C3-41BB-99EE-5254B7268424.jpeg">
+</div>
+
+<div class="ba-img after">
+<div class="ba-label">After</div>
+<img src="images/after1.jpg">
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="gallery-card" data-category="commercial">
+
+<div class="ba-wrap">
+
+<div class="ba-img before">
+<div class="ba-label">Before</div>
+<img src="images/0AF99E4C-82C3-41BB-99EE-5254B7268424.jpg">
+</div>
+
+<div class="ba-img after">
+<div class="ba-label">After</div>
+<img src="images/after2.jpg">
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="gallery-card" data-category="construction">
+
+<div class="ba-wrap">
+
+<div class="ba-img before">
+<div class="ba-label">Before</div>
+<img src="images/before3.jpg">
+</div>
+
+<div class="ba-img after">
+<div class="ba-label">After</div>
+<img src="images/after3.jpg">
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="gallery-card" data-category="exterior">
+
+<div class="ba-wrap">
+
+<div class="ba-img before">
+<div class="ba-label">Before</div>
+<img src="images/before4.jpg">
+</div>
+
+<div class="ba-img after">
+<div class="ba-label">After</div>
+<img src="images/after4.jpg">
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<script>
+
+/* FILTER FUNCTION */
+
+const filterButtons=document.querySelectorAll(".filter-btn");
+const cards=document.querySelectorAll(".gallery-card");
+
+filterButtons.forEach(btn=>{
+
+btn.addEventListener("click",()=>{
+
+filterButtons.forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+
+const filter=btn.getAttribute("data-filter");
+
+cards.forEach(card=>{
+
+if(filter==="all" || card.dataset.category===filter){
+card.style.display="block";
+}else{
+card.style.display="none";
+}
+
+});
+
+});
+
+});
+
+</script>
+
+
+</body>
+</html>
